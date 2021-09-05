@@ -65,6 +65,8 @@ const obj = {
 console.log(obj.foo()); // 1
 console.log(obj.bar()); // 1
 ```
+ES6 사양에서 메서드는 메서드 축약 표현으로 정의된 함수만을 의미한다.
+
 ES6 메서드는 인스턴스를 생성할 수 없는 non-constructor이기 때문에, 생성자 함수로서 호출할 수 없고 프로토타입 또한 생성하지 않는다.
 
 > 호출할 수 있는 함수 객체를 callable이라 하며 인스턴스를 생성할 수 있는 함수 객체를 construtor 인스턴스를 생성할 수 없는 함수 객체를 non-constructor라고 부른다.
