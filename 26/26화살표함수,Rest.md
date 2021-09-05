@@ -76,7 +76,7 @@ ES6 메서드는 인스턴스를 생성할 수 없는 non-constructor이기 때�
 
 > 인스턴스 
 > * a instanceof B 는 a가 B의 인스턴스라면 true를 반환하고, 아니라면 false를 반환한다.
-MDN에서는 instanceof 연산자에 대해 이렇게 설명하고 있다.
+
 > * [instanceof 연산자](https://velog.io/@code-bebop/JS-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4instance)는 object의 프로토타입 체인에 constructor.prototype이 존재하는지 판별합니다.
 >
 
