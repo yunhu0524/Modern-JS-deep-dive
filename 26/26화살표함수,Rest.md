@@ -128,7 +128,7 @@ console.log(derived.sayHi()); // Hi! Lee. how are you doing?
 화살표 함수의 특징은 다음과 같다.
 <br/>
 <br/>
-### 1. 인스턴스를 생성할 수 없다.
+### 3-1. 인스턴스를 생성할 수 없다.
 
 화살표 함수는 생성자 함수로서 호출할 수 없다.
 
@@ -140,7 +140,7 @@ new Foo(); // TypeError: Foo is not a constructor
 
 인스턴스를 생성할 수 없기 때문에 prototype 프로퍼티도 없고 프로토타입도 생성하지 않는다.
 <br/><br/>
-### 2. 중복된 매개변수 이름을 선언할 수 없다.
+### 3-2. 중복된 매개변수 이름을 선언할 수 없다.
 
 ```js
 
@@ -158,11 +158,11 @@ const arrow = (a, a) => a + a;
 ```
 일반 함수는 매개변수 이름을 중복해서 선언해도 에러가 발생하지 않지만, 화살표 함수에서는 에러가 발생한다.
 <br/><br/>
-### 3. 함수 자체의 this, super, arguments를 갖지 않는다.
+### 3-3. 함수 자체의 this, super, arguments를 갖지 않는다.
 
 화살표 함수는 함수 내부에서 this, super, arguments를 참조하면, 스코프 체인을 통해 상위 스코프의 this, super, arguments를 참조한다.
 <br/><br/>
-### 4. this
+### 3-4. this
 
 화살표 함수가 일반 함수와 구별되는 가장 큰 특징은 바로 this다.<br/>
 
