@@ -231,7 +231,7 @@ console.log(counter.increase()); // ?
 
 따라서 이렇게 메서드를 화살표 함수로 정의하는 것은 피해야 한다.
 
-### 5. super
+### 3-5. super
 
 화살표 함수는 함수 자체의 super 바인딩을 갖지 않는다. 화살표 함수 내부에서 super를 참조하면 상위 스코프의 super를 참조한다.
 
@@ -255,7 +255,7 @@ console.log(derived.sayHi()); // Hi! Lee how are you doing?
 ```
 super는 ES6 메서드 내에서만 사용할 수 있다. 화살표 함수 sayHi는 상위 스코프인 constructor super 바인딩을 참조해 super 바인딩을 갖지 않아도 에러가 발생하지 않는다.
 
-### 6. arguments
+### 3-6. arguments
 
 화살표 함수는 함수 자체의 arguments 바인딩을 갖지 않는다. 화살표 함수 내부에서 arguments를 참조하면 상위 스코프의 arguments를 참조한다.
 
