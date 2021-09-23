@@ -3,7 +3,7 @@
 브라우저는 클릭이나 키보드 입력, 마우스 이동 등이 일어나면 이를 감지해 특정한 타입의 이벤트를 발생시킨다.
 
 이때 이벤트가 발생했을 때 호출될 함수를 <strong>이벤트 핸들러(event handler)</strong>라 하고, 이벤트가 발생했을 때 브라우저에게 이벤트 핸들러의 호출을 위임하는 것을 <strong>이벤트 핸들러 등록</strong>이라 한다. 즉, 특정 버튼 요소에서 클릭 이벤트가 발생하면 특정 함수(이벤트 핸들러)를 호출하도록 브라우저에게 위임(이벤트 핸들러 등록)할 수 있다.
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -23,7 +23,7 @@ click과 같은 이벤트 타입의 경우 약 200여 가지가 있는데, 이�
 ## 40.3 이벤트 핸들러 등록
 ### 40.3.1 이벤트 핸들러 어트리뷰트 방식
 HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있다. 이벤트 핸들러 어트리뷰트 값으로 함수 호출문 등의 문(statement)을 할당하면 이벤트 핸들러가 등록된다.
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -40,7 +40,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 어트리뷰트 값으로 함수 참조가 아닌 함수 호출문 등의 문을 할당한다는 것에 주의하자.
 
 `onclick="sayHi('Lee')"` 어트리뷰트는 파싱되어 다음과 같은 함수를 암묵적으로 생성하고 이벤트 핸들러 어트리뷰트 이름과 동일한 키 `onclick` 이벤트 핸들러 프로퍼티에 할당한다.
-```js
+```html
  function onclick(event) {
    sayHi('Lee');
  }
@@ -48,14 +48,14 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
  이렇게 동작하는 이유는 이벤트 핸들러에 인수를 전달하기 위해서다. 만약 값으로 함수 참조를 할당해야 한다면 이벤트 핸들러에 인수를 전달하기가 곤란하다.
 
 또한 이벤트 핸들러 어트리뷰트 값으로 할당한 문자열은 암묵적으로 생성되는 이벤트 핸들러의 함수 몸체이기 때문에, 어트리뷰트 값으로 여러 개의 문을 할당할 수도 있다.
-```js
+```html
 <button onclick="console.log('Hi! '); console.log('Lee');">Click me!</button>
 ```
 ### 40.3.2 이벤트 핸들러 프로퍼티 방식
 
 `window` 객체와 `Document, HTMLElement` 타입의 DOM 노드 객체는 이벤트에 대응하는 이벤트 핸들러 프로퍼티를 가지고 있다.
 
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -68,7 +68,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 </html>
 ```
 이벤트 타겟인 버튼이 클릭되면 이벤트 핸들러가 호출되도록 이벤트 핸들러 프로퍼티에 이벤트 핸들러를 바인딩한다. 단, 이벤트 핸들러 프로퍼티에는 하나의 이벤트 핸들러만 바인딩할 수 있다.
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -91,7 +91,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 
 마지막 매개변수에는 이벤트를 캐치할 이벤트 전파 단계(캡쳐링 또는 버블링)을 지정한다. 생략하거나 false를 지정하면 버블링 단계에서 이벤트를 캐치하고 true를 지정하면 캡처링 단계에서 이벤트를 캐치한다.
 
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -112,7 +112,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 ```
 `addEventListener` 메서드는 하나 이상의 이벤트 핸들러를 등록할 수 있으며, 등록된 순서대로 호출된다. 단, 동일한 이벤트를 중복 등록하면 하나의 이벤트 핸들러만 등록된다.
 
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -133,7 +133,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 ```
 
 그렇다면 이벤트 핸들러 프로퍼티 방식과 `addEventListener` 메서드 방식을 모두 사용해 이벤트 핸들러를 등록하면 어떻게 동작할까?
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -160,7 +160,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 ## 40.4 이벤트 핸들러 제거
 `addEventListener` 메서드로 등록한 이벤트 핸들러를 제거하기 위해 `removeEventListener` 메서드를 사용한다. 이때 `addEventListener` 메서드에 전달한 인수와 `removeEventListener` 메서드에 전달한 인수가 일치하지 않으면 이벤트 핸들러가 제거되지 않는다.
 
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -179,7 +179,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 </html>
 ```
 또한 무명 함수를 이벤트 핸들러로 등록할 경우에도 제거할 수 없다.
-```js
+```html
 <script>
   $button.addEventListener('click', () => console.log('button click'));
 </script>
@@ -187,7 +187,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 
 하지만 기명 이벤트 핸들러 내부에서 removeEventListener 메서드를 호출해 이벤트 핸들러를 제거할 수 있다. 이때 이벤트 핸들러는 단 한 번만 호출된다.
 
-```js
+```html
 <script>
   $button.addEventListener('click', function foo() { 
   	console.log('button click');
@@ -197,7 +197,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 ```
 또한 이벤트 핸들러 프로퍼티 방식으로 등록한 이벤트 핸들러는 `removeEventListener` 메서드를 제거할 수 없다. 제거하기 위해선 이벤트 핸들러 프로퍼티에 null을 할당해야 한다.
 
-```js
+```html
 <script>
   const $button = document.querySelector('button');
     
@@ -213,7 +213,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 ## 40.5 이벤트 객체
 
 이벤트가 발생하면 이벤트에 관련한 다양한 정보를 담고 있는 이벤트 객체가 동적으로 생성된다. 생성된 이벤트 객체는 이벤트 핸들러의 첫 번째 인수로 전달된다.
-```js
+```html
 <!DOCTYPE html>
 <html>
 <!-- 어트리뷰트 방식의 경우 event가 아닌 다른 이름으로는 이벤트 객체를 전달받지 못한다. -->
@@ -236,7 +236,7 @@ HTML 요소의 어트리뷰트에는 이벤트 핸들러 어트리뷰트가 있�
 
 앞서 살펴본 바와 같이 이벤트 핸들러 어트리뷰트 값은 암묵적으로 생성되는 이벤트 핸들러의 함수 몸체이기 때문이다. `onclick="showCoords(event)" `어트리뷰트는 파싱되어 다음과 같은 함수를 암묵적으로 생성하여 onclick 이벤트 핸들러 프로퍼티에 할당한다.
 
-```js 
+```html 
 function onclick(event) {
   showCoords(event);
 }
@@ -249,7 +249,7 @@ function onclick(event) {
 
 ![image](https://user-images.githubusercontent.com/56018469/134509643-99a9926e-bfeb-4493-b0a6-d3af12011d88.png)
 
-`MouseEvent` 타입의 이벤트 객체는 사용자가 마우스를 클릭하거나 이동했을 때 생성되는 이벤트 객체이고, `CustomEvent `타입의 이벤트 객체는 JS 코드로 인해 인위적으로 생성한 이벤트 객체다.
+`MouseEvent` 타입의 이벤트 객체는 사용자가 마우스를 클릭하거나 이동했을 때 생성되는 이벤트 객체이고, `CustomEvent `타입의 이벤트 객체는 html 코드로 인해 인위적으로 생성한 이벤트 객체다.
 
 `Event` 인터페이스에는 모든 이벤트 객체의 공통 프로퍼티가 정의되어 있다.
 
@@ -262,7 +262,7 @@ Event 하위 인터페이스에는 이벤트 타입에 따라 고유한 프로�
 DOM 트리 상에 존재하는 DOM 요소 노드에서 발생한 이벤트는 DOM 트리를 통해 전파(event propagation)된다.
 
 
-```js
+```html
 <body>
   <ul id="fruits">
     <li id="apple">Apple</li>
@@ -292,7 +292,7 @@ load/unload/abort/error (리소스 이벤트)
 mouseenter/mouseleave (마우스 이벤트)
 위 이벤트들은 버블링되지 않아 이벤트 타겟의 상위 요소에서 위 이벤트를 캐치하려면 캡처링 단계의 이벤트를 캐치해야 하지만, 버블링되는 이벤트로 위의 이벤트들을 대체할 수 있다. 포커스 이벤트는 focusin/focusout으로, 마우스 이벤트는 mouseover/mouseout으로 대체할 수 있다.
 
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
@@ -329,7 +329,7 @@ body와 button은 버블링 단계의 이벤트만을 캐치하고 p는 캡처�
 
 이벤트 위임(event delegation)은 여러 개의 하위 DOM 요소에 각각 이벤트 핸들러를 등록하는 대신 하나의 상위 DOM 요소에 이벤트 핸들러를 등록하는 것을 말한다. 이벤트 위임을 통해 상위 DOM 요소에 이벤트 핸들러를 등록하면 여러 개의 하위 DOM 요소에 이벤트 핸들러를 등록할 필요가 없다.
 
-```js
+```html
 <!DOCTYPE html>
 <html>
 <body>
