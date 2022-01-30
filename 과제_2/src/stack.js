@@ -38,14 +38,15 @@ class Stack {
     return this;
   }
   isEmpty() {
-    return this.lenth;
+    return this.length;
   }
 }
 
 const myStack = new Stack();
-myStack.push("google");
-myStack.push("facebook");
-myStack.push("udemy");
+myStack.push("1");
+myStack.push("2");
+myStack.push("3");
+myStack.pop();
 myStack.peek();
 myStack.isEmpty();
 console.log(myStack);
